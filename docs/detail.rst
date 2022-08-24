@@ -17,7 +17,8 @@ Human Atlas
 Mouse Atlas
 ------------------
 - Remove unknown cell types
-- Use 100,000 cells and 400,000 potential regulatory elements
+- Down sample cell numbers to ~35K high quality cells
+- Use 430,000 potential regulatory elements
 
    .. figure:: umap_mouse_reference.png
       :scale: 60 %
@@ -51,7 +52,7 @@ The following files are needed to run *Celltype Annotation* on your own experime
 
 - Optionally: *UMAP* or *tSNE* projection file from each sample
 
-Currently, this package only supports hg38 reference mapping
+Currently, this package only supports hg38 and mm10 reference mapping
 
 
 Intermediate Output
