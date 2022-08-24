@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dimension reduction &mdash; test test documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorials" href="tutorials.html" />
+    <link rel="prev" title="Prepare Reference Atlas" href="detail.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> test
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation and Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference Atlas</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference_details.html">Reference Atlas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Workflow Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="detail.html">Prepare Reference Atlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="detail.html#pipeline-overview">Pipeline Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Algorithms</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dimension reduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#spectral-embedding">Spectral embedding</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#cell-type-assignment">Cell-type Assignment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#k-nearest-neighorbors">K-Nearest Neighorbors</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">test</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Dimension reduction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/algorithm.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dimension-reduction">
+<h1>Dimension reduction<a class="headerlink" href="#dimension-reduction" title="Permalink to this headline"></a></h1>
+<p>Cited from <a class="reference external" href="https://kzhang.org/SnapATAC2/algorithms/dimension_reduction.html#spectral-embedding">https://kzhang.org/SnapATAC2/algorithms/dimension_reduction.html#spectral-embedding</a></p>
+<p>[Fang_2021]: Fang, R., Preissl, S., Li, Y. et al. Comprehensive analysis of single cell ATAC-seq data with SnapATAC. Nat Commun 12, 1337 (2021). <a class="reference external" href="https://doi.org/10.1038/s41467-021-21583-9">https://doi.org/10.1038/s41467-021-21583-9</a></p>
+<p>The dimension reduction method is a pairwise-similarity based method, which requires defining and computing
+similarity between each pair of cells in the data.
+This method was first proposed in [Fang_2021], the version 1 of SnapATAC, and was called “diffusion map”.</p>
+<section id="spectral-embedding">
+<h2>Spectral embedding<a class="headerlink" href="#spectral-embedding" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Start with NxP cell by feature count matrix M, we first compute the NxN pairwise similarity matrix S.</p></li>
+<li><p>Compute the normalized graph Laplacian</p></li>
+<li><p>The eigenvectors correspond to the k+1-smallest eigenvalues of L are selected as the lower dimensional embedding.</p></li>
+</ol>
+</section>
+</section>
+<section id="cell-type-assignment">
+<h1>Cell-type Assignment<a class="headerlink" href="#cell-type-assignment" title="Permalink to this headline"></a></h1>
+<section id="k-nearest-neighorbors">
+<h2>K-Nearest Neighorbors<a class="headerlink" href="#k-nearest-neighorbors" title="Permalink to this headline"></a></h2>
+<p>KNN is a supervised machine learning algorithm that relies on labeled input data to learn a function that produces an appropriate output when given new unlabeled data.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="detail.html" class="btn btn-neutral float-left" title="Prepare Reference Atlas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorials.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, test.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
